@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1738524725 source:/home/jacob/Documents/code/relativity/main.cpp
+	<iostream>
+	<cstdio>
+	<cmath>
+
