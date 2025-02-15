@@ -33,6 +33,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="special.h" />
+		<Unit filename="test_derivative.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

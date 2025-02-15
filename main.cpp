@@ -26,10 +26,11 @@ int main()
 
     interval = standardInterval(t,x,y,z);
 
-    lorentzTransform(v, path, t, x, y, z);
+    struct lorentzStruct lorentzOutput = lorentzTransform(v, path, t, x, y, z);
 
     velocity = velocityAddition(w, v);
 
+    cout << "Your barred time is " << lorentzOutput.lorentzBarred[0] << endl;
     cout << "Your interval is " << interval << " ." << endl;
     cout << "The particle velocity in the other frame is " << velocity << endl;
 

@@ -4,6 +4,10 @@
 
 using namespace std;
 
+struct lorentzStruct
+{
+    double lorentzBarred[4];
+};
 
 double standardInterval(double t, double x, double y, double z)
 {
@@ -14,40 +18,33 @@ double standardInterval(double t, double x, double y, double z)
     return standard_interval;
 }
 
-double lorentzTransform (double frame_velocity, int direction, double time, double x, double y, double z)
+struct lorentzStruct lorentzTransform (double frame_velocity, int direction, double time, double x, double y, double z)
 {
-    double outputX;
-    double outputT;
+    struct lorentzStruct output;
 
     switch (direction)
     {
         case 1:
-           outputT = (time/sqrt(1-frame_velocity*frame_velocity))-((frame_velocity*x)/sqrt(1-frame_velocity*frame_velocity));
-           outputX = (-frame_velocity * time) / sqrt(1-frame_velocity*frame_velocity) + (x/sqrt(1-frame_velocity*frame_velocity));
-           cout << "t bar = " << outputT << endl;
-           cout << "x bar = " << outputX << endl;
-           cout << "y bar = " << y << endl;
-           cout << "z bar = " << z << endl;
+           output.lorentzBarred[0] = (time/sqrt(1-frame_velocity*frame_velocity))-((frame_velocity*x)/sqrt(1-frame_velocity*frame_velocity));
+           output.lorentzBarred[1] = (-frame_velocity * time) / sqrt(1-frame_velocity*frame_velocity) + (x/sqrt(1-frame_velocity*frame_velocity));
+           output.lorentzBarred[2] = y;
+           output.lorentzBarred[3] = z;
            break;
         case 2:
-           outputT = (time/sqrt(1-frame_velocity*frame_velocity))-((frame_velocity*y)/sqrt(1-frame_velocity*frame_velocity));
-           outputX = (-frame_velocity * time) / sqrt(1-frame_velocity*frame_velocity) + (y/sqrt(1-frame_velocity*frame_velocity));
-           cout << "t bar = " << outputT << endl;
-           cout << "x bar = " << x << endl;
-           cout << "y bar = " << outputX << endl;
-           cout << "z bar = " << z << endl;
+           output.lorentzBarred[0] = (time/sqrt(1-frame_velocity*frame_velocity))-((frame_velocity*y)/sqrt(1-frame_velocity*frame_velocity));
+           output.lorentzBarred[1] = x;
+           output.lorentzBarred[2] = (-frame_velocity * time) / sqrt(1-frame_velocity*frame_velocity) + (y/sqrt(1-frame_velocity*frame_velocity));
+           output.lorentzBarred[3] = z;
            break;
         case 3:
-           outputT = (time/sqrt(1-frame_velocity*frame_velocity))-((frame_velocity*z)/sqrt(1-frame_velocity*frame_velocity));
-           outputX = (-frame_velocity * time) / sqrt(1-frame_velocity*frame_velocity) + (z/sqrt(1-frame_velocity*frame_velocity));
-           cout << "t bar = " << outputT << endl;
-           cout << "x bar = " << x << endl;
-           cout << "y bar = " << y << endl;
-           cout << "z bar = " << outputX << endl;
+           output.lorentzBarred[0] = (time/sqrt(1-frame_velocity*frame_velocity))-((frame_velocity*z)/sqrt(1-frame_velocity*frame_velocity));
+           output.lorentzBarred[1] = x;
+           output.lorentzBarred[2] = y;
+           output.lorentzBarred[3] = (-frame_velocity * time) / sqrt(1-frame_velocity*frame_velocity) + (z/sqrt(1-frame_velocity*frame_velocity));
            break;
     }
 
-    return 0;
+    return output;
 }
 
 double velocityAddition (double particle_velocity, double frame_velocity)

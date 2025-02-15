@@ -4,7 +4,13 @@
 	<cstdio>
 	<cmath>
 
-1738593836 source:/home/jake/Documents/code/relativity/main.cpp
+1739644070 source:/home/jake/Documents/code/relativity/main.cpp
+	<iostream>
+	<cstdio>
+	<cmath>
+	"special.h"
+
+1739644800 /home/jake/Documents/code/relativity/special.h
 	<iostream>
 	<cstdio>
 	<cmath>
